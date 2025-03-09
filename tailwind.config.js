@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/app/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"], // Broader path to cover all subdirectories in src
   presets: [require("nativewind/preset")],
-  darkMode: "class", // Set dark mode to 'class' instead of 'media'
+  darkMode: "class", // Keep dark mode as 'class'
   theme: {
     extend: {},
   },
