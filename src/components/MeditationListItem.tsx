@@ -3,6 +3,7 @@ import { Meditation } from '../types';
 import "../../global.css"
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Entypo from '@expo/vector-icons/Entypo';
+import {Link} from "expo-router";
 
 export function MeditationListItem({meditation}:{meditation :Meditation}){
 
@@ -21,6 +22,8 @@ export function MeditationListItem({meditation}:{meditation :Meditation}){
                                         <AntDesign name="clockcircleo" size={16} color="dingray" />
                                         <Text className="text-gray-600"> {meditation.duration} min </Text>
                     </View>
+
+                    <Link href="/meditation/details">Go to details</Link>
 
             </View>
          </View>
