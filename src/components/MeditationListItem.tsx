@@ -10,6 +10,7 @@ export function MeditationListItem({meditation}:{meditation :Meditation}){
      
 
          return (
+                <Link href="/meditation/details">
          <View className="flex-row items-center gap-5">
           <View className="bg-green-700 p-1 rounded-full">
            <Entypo name="check" size={16} color="white" />
@@ -23,9 +24,10 @@ export function MeditationListItem({meditation}:{meditation :Meditation}){
                                         <Text className="text-gray-600"> {meditation.duration} min </Text>
                     </View>
 
-                    <Link href="/meditation/details">Go to details</Link>
+               
 
             </View>
          </View>
+         </Link>
          )
 }
