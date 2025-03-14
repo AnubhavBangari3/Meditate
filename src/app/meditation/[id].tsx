@@ -1,4 +1,4 @@
-import {Text} from 'react-native';
+import {Text,View,Pressable} from 'react-native';
 import { useLocalSearchParams,router,Link } from 'expo-router';
 import { meditations } from '../../data';
 import AntDesign from '@expo/vector-icons/AntDesign';
@@ -16,11 +16,26 @@ export default function MeditationDetails(){
 
           return(
                     
-                    <SafeAreaView>
-                    <Link href="../">
-                    <AntDesign onPress = {() => router.back()} style={{top:top+10}} className="absolute top-16 right-10" name="close" size={24} color="black" />
-                    <Text className="text-3xl mt-16">Meditation Details : {meditation?.title}</Text>
-                    </Link>
+                    <SafeAreaView className="bg-orange-300 flex-1 p-2 items-center">
+                               
+                               <View className="flex-row items-center justify-between p-10">
+                                        {/* Left Side - Info Icon */}
+                                        <Link href="../">
+                                        <AntDesign name="infocirlceo" size={24} color="black" />
+                                        </Link>
+
+                                        {/* Center - Text */}
+                                        <Text><b>Today's Meditation</b></Text>
+
+                                        {/* Right Side - Close Icon */}
+                                        <AntDesign onPress={() => router.back()} name="close" size={24} color="black" />
+                              </View>
+
+                    <Text className="text-3xl mt-16 text-center text-zinc-800 font-semibold">Meditation Details : {meditation?.title}</Text>
+
+                    <Pressable className="bg-zinc-800 w-25 h-25 self-center p-6 rounded-full">
+                    <AntDesign name="play" size={24} color="white" />
+                    </Pressable>
                     
                     </SafeAreaView>
           )
