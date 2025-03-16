@@ -19,6 +19,13 @@ export default function MeditationDetails(){
           const player = useAudioPlayer(audioFile);
           const status=useAudioPlayerStatus(player);
 
+          const formatSeconds = (miliseconds : number) =>{
+                    const minutes=Math.floor(miliseconds/60000);
+                    const seconds=Math.floor((miliseconds % 60000)/1000);
+                    return `${minutes}:${seconds.toString().padStart(2,'0')}`
+
+          }
+
           if (!meditation){
                     return <Text>Meditation not found !</Text>
 
@@ -83,8 +90,8 @@ export default function MeditationDetails(){
 
                               <Slider
                               style={{width:'100%', height: 40}}
-                              value={0.5}
-                              onSlidingComplete={(value) => console.log(value)}
+                              value={status.currentTime / status.duration}
+                              onSlidingComplete={(value) => player.seekTo(value * status.duration)}
                               minimumValue={0}
                               maximumValue={1}
                               minimumTrackTintColor="#FFFFFF"
@@ -95,12 +102,12 @@ export default function MeditationDetails(){
                               <View className="flex-row items-center justify-between w-full">
                               {/* Left Side - Start Time */}
                               <View className="flex-1 items-start">
-                              <Text className="text-left font-bold">01:11</Text>
+                              <Text className="text-left font-bold">{formatSeconds(status.currentTime)}</Text>
                               </View>
 
                               {/* Right Side - End Time */}
                               <View className="flex-1 items-end">
-                              <Text className="text-right font-bold">11:11</Text>
+                              <Text className="text-right font-bold">{formatSeconds(status.duration)}</Text>
                               </View>
                               </View>
                     </View>
